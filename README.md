@@ -23,32 +23,28 @@ scripts/install_srilm.sh
 source tools/env.sh
 ```
 
-### pysrilm
-```
-cd tools/pysrilm
-source ~/venv-py2/bin/activate # use py2
-pip install cython
-python setup.py install
-```
-
 ## Train
 下载语料文件: https://pan.baidu.com/s/1qYDgKvM，放在 tmp/corpus 文件夹下。
 
 ### Count File
 
 ```
-$ ./scripts/srilm_0_count.sh # almost run 5mins on my laptop, i5 cpu, 8GB mem.
-tmp/corpus/iqa.ngram-corpus: line 2612014: 2.61201e+06 sentences, 3.33705e+08 words, 0 OOVs
+$ ./scripts/srilm_0_count.sh # almost run 5seconds on my laptop, i5 cpu, 8GB mem.
+corpus/iqa.ngram.train: line 39445: 39445 sentences, 2.16426e+06 words, 0 OOVs
 0 zeroprobs, logprob= 0 ppl= 1 ppl1= 1
 ```
 
 ### Language Model
 
 ```
-$ ./scripts/srilm_1_lm.sh # almost run 20mins on my laptop, i5 cpu, 8GB mem.
+$ ./scripts/srilm_1_lm.sh # almost run 5mins on my laptop, i5 cpu, 8GB mem.
+CONTEXT 此 支付 numerator 0.389585 denominator 0.988694 BOW -0.404459
+CONTEXT 此 是 numerator 0.383682 denominator 0.887665 BOW -0.364277
+CONTEXT 此 找到 numerator 0.389585 denominator 0.942731 BOW -0.383785
+CONTEXT 此 具有 numerator 0.325904 denominator 0.935851 BOW -0.458116
 writing 24999 1-grams
-writing 522852 2-grams
-writing 1337703 3-grams
+writing 113392 2-grams
+writing 98471 3-grams
 ```
 
 ### Calculate perplexity for test data 
@@ -79,12 +75,19 @@ file tmp/corpus/iqa.ngram-corpus.test: 1 sentences, 6 words, 1 OOVs
 
 ## Trouble Shotting
 
+### pysrilm[not work in Mac OSX]
+```
+cd tools/pysrilm
+source ~/venv-py2/bin/activate # use py2
+pip install cython
+python setup.py install
+```
+
 1. clang: error: unsupported option '-fopenmp' on Mac OSX
 https://github.com/ppwwyyxx/OpenPano/issues/16
 ```
 brew install gcc --without-multilib
 export CXX=/usr/local/Cellar/gcc/7.2.0/bin/g++-7
-
 ```
 
 
