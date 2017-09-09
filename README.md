@@ -19,12 +19,18 @@ http://xiaosheng.me/2017/06/08/article69/
 Download [srilm toolkit](http://www.speech.sri.com/projects/srilm/) 1.7.0 to ```downloads/srilm-1.7.0.tgz```.
 
 ```
-scripts/install_srilm.sh
+scripts/install_srilm.sh # verified on Mac OSX and Ubuntu 16.04
 source tools/env.sh
 ```
 
+## Corpus
+
+corpus/iqa.ngram.vocab 词汇
+corpus/iqa.ngram.valid 验证: fit hyper params
+corpus/iqa.ngram.train 训练: train language models
+corpus/iqa.ngram.test 测试: evaluate language models
+
 ## Train
-下载语料文件: https://pan.baidu.com/s/1qYDgKvM，放在 tmp/corpus 文件夹下。
 
 ### Count File
 
@@ -54,23 +60,11 @@ $ ./scripts/srilm_2_ppl.sh
 reading 24999 1-grams
 reading 522852 2-grams
 reading 1337703 3-grams
-我们 什么 时候 要有 健康 保险
-        p( 我们 | <s> )         = [2gram] 0.00305013 [ -2.51568 ]
-        p( 什么 | 我们 ...)     = [2gram] 2.51044e-07 [ -6.60025 ]
-        p( 时候 | 什么 ...)     = [3gram] 0.989583 [ -0.00454763 ]
-        p( <unk> | 时候 ...)    = [OOV] 0 [ -inf ]
-        p( 健康 | <unk> ...)    = [1gram] 0.00365603 [ -2.43699 ]
-        p( 保险 | 健康 ...)     = [2gram] 0.517352 [ -0.286214 ]
-        p( </s> | 保险 ...)     = [3gram] 0.00889128 [ -2.05104 ]
-1 sentences, 6 words, 1 OOVs
-0 zeroprobs, logprob= -13.8947 ppl= 206.912 ppl1= 601.096
-6 words, rank1= 0.333333 rank5= 0.333333 rank10= 0.333333
-7 words+sents, rank1wSent= 0.285714 rank5wSent= 0.285714 rank10wSent= 0.285714 qloss= 0.774778 absloss= 0.639638
-
-file tmp/corpus/iqa.ngram-corpus.test: 1 sentences, 6 words, 1 OOVs
-0 zeroprobs, logprob= -13.8947 ppl= 206.912 ppl1= 601.096
-6 words, rank1= 0.333333 rank5= 0.333333 rank10= 0.333333
-7 words+sents, rank1wSent= 0.285714 rank5wSent= 0.285714 rank10wSent= 0.285714 qloss= 0.774778 absloss= 0.639638
+        p( </s> | 否定 ...)     = [3gram] 0.029511 [ -1.53002 ]
+1 sentences, 58 words, 0 OOVs
+0 zeroprobs, logprob= -111.2 ppl= 76.6906 ppl1= 82.649
+58 words, rank1= 0.206897 rank5= 0.37931 rank10= 0.534483
+59 words+sents, rank1wSent= 0.20339 rank5wSent= 0.389831 rank10wSent= 0.542373 qloss= 0.91776 absloss= 0.900032
 ```
 
 ## Trouble Shotting
