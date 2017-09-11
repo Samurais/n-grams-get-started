@@ -28,10 +28,13 @@ source tools/env.sh
 
 ## Corpus
 
-corpus/iqa.ngram.vocab 词汇
-corpus/iqa.ngram.valid 验证: fit hyper params
-corpus/iqa.ngram.train 训练: train language models
-corpus/iqa.ngram.test 测试: evaluate language models
+corpus/insuranceqa/ngrams/iqa.ngram.vocab 词汇
+
+corpus/insuranceqa/ngrams/iqa.ngram.valid 验证: fit hyper params
+
+corpus/insuranceqa/ngrams/iqa.ngram.train 训练: train language models
+
+corpus/insuranceqa/ngrams/iqa.ngram.test 测试: evaluate language models
 
 ## Train
 

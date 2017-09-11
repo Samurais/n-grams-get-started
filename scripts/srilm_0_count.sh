@@ -7,9 +7,9 @@
 baseDir=$(cd `dirname "$0"`;pwd)
 ORDER=3
 ## corpus
-VOCAB_FILE=corpus/iqa.ngram.vocab
-TRAIN_FILE=corpus/iqa.ngram.train
-TEST_FILE=corpus/iqa.ngram.test
+VOCAB_FILE=corpus/insuranceqa/ngrams/iqa.ngram.vocab
+TRAIN_FILE=corpus/insuranceqa/ngrams/iqa.ngram.train
+TEST_FILE=corpus/insuranceqa/ngrams/iqa.ngram.test
 
 ## models
 COUNT_FILE=tmp/iqa.ngram.count$ORDER
